@@ -5,15 +5,19 @@ import notFound from './app/middlewares/notFound';
 import route from './app/routes';
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: ['https://animation-lilac-phi.vercel.app', 'http://localhost:3000'],
+  }),
+);
 app.get('/', (req, res) => {
   res.json({
     success: true,
     message: 'Hello World',
   });
 });
-app.use('/api/v1', route);
+app.use('/api', route);
 app.use(globalErrorHander);
 app.use(notFound);
 
