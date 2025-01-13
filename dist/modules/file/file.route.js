@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fileRoute = void 0;
+const express_1 = require("express");
+const file_controller_1 = require("./file.controller");
+const file_utils_1 = require("./file.utils");
+// import auth from '../../middlewares/auth';
+// import { upload } from '../../app';
+const route = (0, express_1.Router)();
+route.post('/', file_utils_1.upload.single('data'), file_controller_1.fileControllers.uploadFile);
+route.get('/user/:id', file_controller_1.fileControllers.getUserAllFile);
+route.get('/', file_controller_1.fileControllers.getAllFile);
+route.put('/:id', file_controller_1.fileControllers.updateFile);
+exports.fileRoute = route;

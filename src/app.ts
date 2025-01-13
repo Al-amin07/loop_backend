@@ -1,16 +1,25 @@
 import express from 'express';
 import cors from 'cors';
-import globalErrorHander from './app/middlewares/globalErrorHandler';
-import notFound from './app/middlewares/notFound';
-import route from './app/routes';
+import route from './routes';
+import globalErrorHander from './middlewares/globalErrorHandler';
+import notFound from './middlewares/notFound';
+import cookieParser from 'cookie-parser';
+import Stripe from 'stripe';
+import config from './config';
+import multer from 'multer';
+export const upload = multer({ storage: multer.memoryStorage() });
+export const stripe = new Stripe(config.stript_secret as string);
 const app = express();
 
 app.use(express.json());
 app.use(
   cors({
-    origin: ['https://animation-lilac-phi.vercel.app', 'http://localhost:3000'],
+    origin: ['http://localhost:5173', 'https://lo-op.netlify.app'],
+    credentials: true,
   }),
 );
+
+app.use(cookieParser());
 app.get('/', (req, res) => {
   res.json({
     success: true,
