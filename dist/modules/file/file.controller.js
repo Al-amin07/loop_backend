@@ -17,6 +17,7 @@ exports.fileControllers = void 0;
 const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const file_service_1 = require("./file.service");
+// import { IFile } from './file.interface';
 const uploadFile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user_id, fileName, contentType, fileType } = req.body;
     const file = req.file;
@@ -73,6 +74,15 @@ const getAllFile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
         data: result,
     });
 }));
+const getHeaderFile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.header);
+    (0, sendResponse_1.default)(res, {
+        statusCode: 200,
+        success: true,
+        message: 'Files retrived successfully',
+        data: 'sf',
+    });
+}));
 const getUserAllFile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield file_service_1.fileServices.getUserAllFile(id);
@@ -98,4 +108,5 @@ exports.fileControllers = {
     getUserAllFile,
     getAllFile,
     updateFile,
+    getHeaderFile,
 };

@@ -8,5 +8,6 @@ const route = Router();
 route.post('/', upload.single('data'), fileControllers.uploadFile);
 route.get('/user/:id', fileControllers.getUserAllFile);
 route.get('/', fileControllers.getAllFile);
+route.get('/new', fileControllers.getHeaderFile);
 route.put('/:id', fileControllers.updateFile);
 export const fileRoute = route;

@@ -10,5 +10,6 @@ const route = (0, express_1.Router)();
 route.post('/', file_utils_1.upload.single('data'), file_controller_1.fileControllers.uploadFile);
 route.get('/user/:id', file_controller_1.fileControllers.getUserAllFile);
 route.get('/', file_controller_1.fileControllers.getAllFile);
+route.get('/new', file_controller_1.fileControllers.getHeaderFile);
 route.put('/:id', file_controller_1.fileControllers.updateFile);
 exports.fileRoute = route;

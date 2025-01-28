@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { paymentControllers } from './payment.controller';
-import auth from '../../middlewares/auth';
 
 const route = Router();
 route.post('/', paymentControllers.createPayment);

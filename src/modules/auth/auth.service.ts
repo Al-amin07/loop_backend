@@ -37,6 +37,7 @@ const loginUser = async (payload: ILogin) => {
     throw new Error('Incorrect password');
   }
   const jwtpayload = {
+    _id: isUserExist?._id,
     email: isUserExist.email,
     role: isUserExist.role,
   };

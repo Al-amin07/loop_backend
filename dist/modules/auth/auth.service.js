@@ -44,6 +44,7 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         throw new Error('Incorrect password');
     }
     const jwtpayload = {
+        _id: isUserExist === null || isUserExist === void 0 ? void 0 : isUserExist._id,
         email: isUserExist.email,
         role: isUserExist.role,
     };

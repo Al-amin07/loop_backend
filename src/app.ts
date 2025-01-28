@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import Stripe from 'stripe';
 import config from './config';
 import multer from 'multer';
+
 export const upload = multer({ storage: multer.memoryStorage() });
 export const stripe = new Stripe(config.stript_secret as string);
 const app = express();

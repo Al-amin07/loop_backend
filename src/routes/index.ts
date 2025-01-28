@@ -3,6 +3,7 @@ import { authRoute } from '../modules/auth/auth.route';
 import { userRoute } from '../modules/user/user.route';
 import { paymentRoute } from '../modules/payment/payment.route';
 import { fileRoute } from '../modules/file/file.route';
+import { paypalRoute } from '../modules/paypal/paypal.route';
 
 const route = Router();
 
@@ -22,6 +23,10 @@ const modules = [
   {
     path: '/files',
     route: fileRoute,
+  },
+  {
+    path: '/config',
+    route: paypalRoute,
   },
 ];
 

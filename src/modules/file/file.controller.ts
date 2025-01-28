@@ -3,7 +3,7 @@
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { fileServices } from './file.service';
-import { IFile } from './file.interface';
+// import { IFile } from './file.interface';
 
 const uploadFile = catchAsync(async (req, res) => {
   const { user_id, fileName, contentType, fileType } = req.body;
@@ -65,6 +65,15 @@ const getAllFile = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getHeaderFile = catchAsync(async (req, res) => {
+  console.log(req.header);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Files retrived successfully',
+    data: 'sf',
+  });
+});
 const getUserAllFile = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await fileServices.getUserAllFile(id);
@@ -91,4 +100,5 @@ export const fileControllers = {
   getUserAllFile,
   getAllFile,
   updateFile,
+  getHeaderFile,
 };
